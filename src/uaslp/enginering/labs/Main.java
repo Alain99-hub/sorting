@@ -40,20 +40,39 @@ public class Main {
             System.out.print(dato + ", ");
         }
 
-        Alumno alumnos[] = {
+        Alumno[] alumnos = {
                 new Alumno("Hector", "Hernandez", LocalDate.of(2001, Month.AUGUST, 11), 4723717),
                 new Alumno("Jocelyn", "Llamas", LocalDate.of(2001, Month.JULY, 21), 32321),
                 new Alumno("Antonio", "Galvan", LocalDate.of(2002, Month.JANUARY, 1), 45365645),
                 new Alumno("Francisco", "Solis", LocalDate.of(2001, Month.FEBRUARY, 14), 72436723),
                 new Alumno("Caleb", "Solis", LocalDate.of(2001, Month.FEBRUARY, 16), 72436723),
                 new Alumno("Arturo", "Llamas", LocalDate.of(2001, Month.JULY, 12), 32321),
-
-
         };
 
+
+        System.out.println();
+        System.out.println();
+        System.out.println("Ordenamiento por LastName and FirstName");
         // Ordenar los alumnos por lastName y firstName e imprimir
 
+        sort(alumnos, new LastnameAscendantComparator());
+        sort(alumnos, new FirstNameAscendantComparator());
+
+        for (Alumno alumno : alumnos) {
+            alumno.drawData();
+        }
+
         // Ordenar por mes de nacimiento y por clave e imprimir
+        System.out.println();
+        System.out.println("Ordenamiento por date and key");
+
+            sort(alumnos, new KeyAscendantComparator());
+            sort(alumnos, new DateAscendantComparator());
+
+
+        for (Alumno alumno : alumnos){
+            alumno.drawData();
+        }
     }
 
     private static void sort(Object[] datos, Comparator comparator) {
